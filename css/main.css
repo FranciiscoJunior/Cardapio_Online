@@ -10,7 +10,7 @@
 
 :root{
     --color-background-color: #fffdf7;
-    --color-blank: #212121;
+    --color-black: #030303;
     --color-text: #4f4f4f;
     --color-text-out: #90908e;
     --color-primary: #ffbf00;
@@ -186,7 +186,7 @@ a.navbar-brand{
 }
 
 .title{
-    color: var(--color-blank);
+    color: var(--color-black);
     font-size: 40px;
     margin-top: 5px;
     margin-bottom: 30px;
@@ -211,4 +211,12 @@ a.navbar-brand{
     font-size: 22px;
     color: var(--color-blank);
     margin-bottom: 10px;
+}
+
+.background-servicos{
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 500px;
+    background-image: url(../img/bg-icons-2.png);
 }
