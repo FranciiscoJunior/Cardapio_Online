@@ -16,6 +16,7 @@
         "cliente",
         "comida",
         "comunicação",
+        "Continuar",
         "demais",
         "Depoimentos",
         "dica",
@@ -24,6 +25,7 @@
         "dizem",
         "dois",
         "Entrega",
+        "Enviar",
         "Escolha",
         "estava",
         "etapa",
@@ -56,6 +58,7 @@
         "numero",
         "paramentros",
         "passos",
+        "pedido",
         "pedir",
         "pelo",
         "Pereira",
@@ -75,6 +78,7 @@
         "reservar",
         "Reservas",
         "Restaurante",
+        "Revisar",
         "saborosa",
         "seguidos",
         "segura",
@@ -90,6 +94,7 @@
         "Todos",
         "três",
         "viagem",
-        "Você"
+        "Você",
+        "Voltar"
     ]
 }

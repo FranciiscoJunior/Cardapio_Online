@@ -494,7 +494,20 @@ a.navbar-brand{
 .m-body{
     flex: 1;
     overflow: auto;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.m-body::-webkit-scrollbar{
+    width: 6px;
+    background: transparent;
+}
+
+.m-body::-webkit-scrollbar-thumb{
+    background: var(--color-white);
+}
+
+.m-body::-webkit-scrollbar-track{
+    background: transparent;
 }
 
 .etapas{
@@ -591,3 +604,26 @@ a.navbar-brand{
     background-color: var(--color-red);
     margin-left: 15px;
 }
+
+.container-total{
+    padding-top: 20px;
+    border-top: 2px solid var(--color-separate);
+}
+
+.container-total .texto-entrega{
+    color: var(--color-separate);
+}
+
+.container-total .texto-total{
+    color: var(--color-black);
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.container-total .valor-total{
+    color: var(--color-primary);
+    font-size: 24px;    
+}
+
+
+
