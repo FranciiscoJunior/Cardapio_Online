@@ -1,15 +1,15 @@
 $(document).ready(function(){
     cardapio.eventos.init();
-});
+})
 
 var cardapio = {};
 
 cardapio.eventos = {
     init: () =>{
-
         cardapio.metodos.obterItensCardapio();
     }
 }
+
 cardapio.metodos = {
     // obtem a lista do cardapio
     obterItensCardapio: (categoria = 'burgers') =>{
