@@ -33,7 +33,7 @@ b{
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 .color-primary{
@@ -43,7 +43,6 @@ b{
 a.navbar-brand{
     margin-left: -25px;
 }
-
 
 .nav-link{
     color: var(--color-blank)!important;
