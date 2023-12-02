@@ -26,7 +26,7 @@ cardapio.metodos = {
 
             //Botão ver mais acionado (12 itens).
 
-            if(vermais && i => 8 && i < 12){
+            if(vermais && i == 8 && i < 12){
                 $("#itensCardapio").append(temp)
             }
 
@@ -38,7 +38,7 @@ cardapio.metodos = {
 
         
         //Remove o ativo
-        $(".container-menu a")removeClass('active');
+        $(".container-menu a").removeClass('active');
 
         // Seta o menu para ativo
 
@@ -47,11 +47,11 @@ cardapio.metodos = {
 }
 
 cardapio.templates = {
-    item: '
+    item: `
                         <div class="col-3 mb-5">
                             <div class="card card-item">
                                 <div class="img-produto">
-                                    <img src="\${img}/">
+                                    <img src="\${img}">
                                 </div>
                                 <p class="title-produto text-center mt-4">
                                     <b>\${nome}</b>
@@ -68,5 +68,5 @@ cardapio.templates = {
                                 </div>
                             </div>
                         </div>
-        '
+        `
 }
