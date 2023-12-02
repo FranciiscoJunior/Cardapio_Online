@@ -26,6 +26,7 @@ cardapio.metodos = {
             let temp = cardapio.templates.item.replace(/\${img}/g, e.img)
             .replace(/\${nome}/g, e.name)
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.',','))
+            .replace(/\${id}/g, e.id)
 
             //Botão ver mais acionado (12 itens).
             if(vermais && i== 8 && i < 12){
@@ -53,12 +54,25 @@ cardapio.metodos = {
         $("#btnVerMais").addClass('hidden');
     },
 
-}
+    //Botão diminuir quantidade de itens do cardapio
+    diminuirQuantidade: (id) => {
+        let qntdAtual = parseInt($("#qntd-" + id).txt());
 
+        if (qntdAtual > 0){
+            ($("#qntd-" + id).txt(qntdAtual-1))
+        }
+    },
+
+    //Botão aumentar quantidade de itens do cardapio
+    aumentarQuantidade: (id) => {
+        let qntdAtual = parseInt($("#qntd-" + id).txt());
+        ($("#qntd-" + id).txt(qntdAtual+1))
+    },
+}
 cardapio.templates = {
     item: `
                         <div class="col-3 mb-5">
-                            <div class="card card-item">
+                            <div class="card card-item" id="\${id}">
                                 <div class="img-produto">
                                     <img src="\${img}">
                                 </div>
@@ -70,12 +84,12 @@ cardapio.templates = {
                                 </p>
 
                                 <div class="add-carrinho">
-                                    <span class="btn btn-menos"><i class="fas fa-minus"></i></span>
-                                    <span class="btn btn-numero-itens">0</span>
-                                    <span class="btn btn-mais"><i class="fas fa-plus"></i></span>
+                                    <span class="btn btn-menos" onclick="cardapio.metodos.diminuirQuantidade('\${id}')"><i class="fas fa-minus"></i></span>
+                                    <span class="btn btn-numero-itens" id="qntd-\${id}">0</span>
+                                    <span class="btn btn-mais" onclick="cardapio.metodos.aumentarQuantidade('\${id}')"><i class="fas fa-plus"></i></span>
                                     <span class="btn btn-add"><i class="fa fa-shopping-bag"></i></span>
                                 </div>
                             </div>
                         </div>
-        `
+        ´
 }
