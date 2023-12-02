@@ -16,7 +16,10 @@ cardapio.metodos = {
         var filtro = MENU [categoria];
         console.log(filtro);
 
-        $("#itensCardapio").html('')
+        if(!vermais){
+            $("#itensCardapio").html('');
+            $("#btnVerMais").removeClass('hidden');
+        }
 
         $.each(filtro, (i, e) =>{
 
@@ -25,25 +28,31 @@ cardapio.metodos = {
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.',','))
 
             //Botão ver mais acionado (12 itens).
-
-            if(vermais && i => 8 && i < 12){
+            if(vermais && i >= 8 && i < 12){
                 $("#itensCardapio").append(temp)
             }
-
             //Paginação inicial, carregando (8 itens).
             if(!vermais && i < 8){
                 $("#itensCardapio").append(temp)
             }
         })
 
-        
         //Remove o ativo
-        $(".container-menu a")removeClass('active');
+        $(".container-menu a").removeClass('active');
 
         // Seta o menu para ativo
 
         $("#menu-" + categoria).addClass('active')
     },
+
+    //Clicando no botão vermais
+    vermais: () =>{
+        var ativo = $(".container-menu a.active").attr('id').split('menu-')[1]; //[menu-][burguers]
+        cardapio.metodos.obterItensCardapio(ativo, true)
+
+        $("#btnVerMais").addClass('hidden');
+    },
+
 }
 
 cardapio.templates = {
