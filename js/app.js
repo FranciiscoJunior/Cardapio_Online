@@ -12,10 +12,11 @@ cardapio.eventos = {
 
 cardapio.metodos = {
     // obtem a lista do cardapio
-
-    obterItensCardapio: (categoria = 'burgers' vermais = false) =>{
-        var filtro = MENU ['burgers'];
+    obterItensCardapio: (categoria = 'burgers', vermais = false) =>{
+        var filtro = MENU [categoria];
         console.log(filtro);
+
+        $("#itensCardapio").html('')
 
         $.each(filtro, (i, e) =>{
 
@@ -23,19 +24,20 @@ cardapio.metodos = {
             .replace(/\${nome}/g, e.name)
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.',','))
 
-
-            //Botão ver mais acionado 
+            //Botão ver mais acionado (12 itens).
 
             if(vermais && i => 8 && i < 12){
                 $("#itensCardapio").append(temp)
             }
 
-            //Paginação inicial, carregando 8 itens.
-            if()
+            //Paginação inicial, carregando (8 itens).
+            if(!vermais && i < 8){
+                $("#itensCardapio").append(temp)
+            }
         })
 
+        
         //Remove o ativo
-
         $(".container-menu a")removeClass('active');
 
         // Seta o menu para ativo
@@ -45,7 +47,7 @@ cardapio.metodos = {
 }
 
 cardapio.templates = {
-    item: 
+    item: '
                         <div class="col-3 mb-5">
                             <div class="card card-item">
                                 <div class="img-produto">
@@ -66,4 +68,5 @@ cardapio.templates = {
                                 </div>
                             </div>
                         </div>
+        '
 }
