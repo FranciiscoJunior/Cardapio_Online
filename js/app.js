@@ -28,7 +28,7 @@ cardapio.metodos = {
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.',','))
 
             //Botão ver mais acionado (12 itens).
-            if(vermais && i == 8 && i < 12){
+            if(vermais && i== 8 && i < 12){
                 $("#itensCardapio").append(temp)
             }
             //Paginação inicial, carregando (8 itens).
