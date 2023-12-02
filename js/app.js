@@ -4,6 +4,8 @@ $(document).ready(function(){
 
 var cardapio = {};
 
+var MEU_CARRINHO = [];
+
 cardapio.eventos = {
     init: () =>{
         cardapio.metodos.obterItensCardapio();
@@ -59,16 +61,22 @@ cardapio.metodos = {
         let qntdAtual = parseInt($("#qntd-" + id).txt());
 
         if (qntdAtual > 0){
-            ($("#qntd-" + id).txt(qntdAtual-1))
+            ($("#qntd-" + id).txt(qntdAtual - 1))
         }
     },
 
     //Botão aumentar quantidade de itens do cardapio
     aumentarQuantidade: (id) => {
         let qntdAtual = parseInt($("#qntd-" + id).txt());
-        ($("#qntd-" + id).txt(qntdAtual+1))
+        ($("#qntd-" + id).txt(qntdAtual + 1))
     },
+
+    adiconarAoCarrinho: (id) =>{
+
+    },
+
 }
+
 cardapio.templates = {
     item: `
                         <div class="col-3 mb-5">
@@ -91,5 +99,5 @@ cardapio.templates = {
                                 </div>
                             </div>
                         </div>
-        ´
+        `
 }
