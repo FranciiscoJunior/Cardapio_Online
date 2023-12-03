@@ -71,10 +71,41 @@ cardapio.metodos = {
         ($("#qntd-" + id).txt(qntdAtual + 1))
     },
 
+    //Pegar item do cardápio e adicionar ao carrinho
     adiconarAoCarrinho: (id) =>{
+        let qntdAtual = parseInt($("#qntd-" + id).txt());
 
+        if (qntdAtual > 0){
+
+            //Obtendo a categoria ativa
+            var categoria = $(".container-menu a.active").attr('id').split('menu-')[1];
+
+            //Obtendo a lista do menu com itens
+
+            let filtro = MENU [categoria];
+
+            //Obtendo item
+            let item = $.grep (filtro, (e, i) => {return e.id == id});
+
+            if (item.lenght > 0){
+
+                //Validação caso já haja item no carrinho
+                let existe = $.grep (MEU_CARRINHO, (elem, index) => {return elem.id == id});
+
+                //Quando existir itens no carrinho, epnas altera a quantidade.
+                if (existe.lenght > 0){
+                    let objIndex = MEU_CARRINHO.findIndex ((obj => obj.id == id))
+                    MEU_CARRINHO[objIndex].qntd = MEU_CARRINHO[objIndex].qntd + qntdAtual;
+                }
+
+                //Quando não existir nehum item no carrinho apenas adicione.
+                else {
+                    item[0].qntd = qntdAtual;
+                    MEU_CARRINHO.push(item[0])
+                }
+            }
+        }
     },
-
 }
 
 cardapio.templates = {
