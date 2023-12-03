@@ -103,6 +103,9 @@ cardapio.metodos = {
                     item[0].qntd = qntdAtual;
                     MEU_CARRINHO.push(item[0])
                 }
+
+                alert ("Item adicionado ao carrinho")
+                $("#qntd-" + id).txt(0)
             }
         }
     },
