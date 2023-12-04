@@ -1,20 +1,30 @@
 <!DOCTYPE html> <!--Tipo do documento HTML-->
 <html lang="pt-br"> <!--linguagem do tipo do documento-->
 
-<head> <!--Cabeçalho-->
+<head> <!--Cabeçalho, e conjuntos de metadados-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante - Online - Seja Bem Vindo</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/fontawesome.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/animate.css">
 </head>
 
 <body>
+    <div class="container-mensagens" id="container-mensagens"></div>
+
+    <!--Botão do carrinho, onde é adicionado os itens do cardapio-->
+    <a class="botao-carrinho hidden" onclick="cardapio.metodos.abrirCarrinho(true)">
+        <div class="badge-total-carrinho">0</div>
+        <i class="fa fa-shopping-bag"></i>
+    </a>
+
     <section class="header">
         <div class="container">
             <nav class="navbar navbar-expand-lg pl-0 pr-0">
 
+                <!--Logo do sistema-->
                 <a class="navbar-brand" href="#">
                     <img src="./img/logo.png" width="160" class="img-logo">
                 </a>
@@ -33,9 +43,10 @@
                         <li class="nav-item"> <a href="#cardapio" class="nav-link"><b>Cardapio</b></a></li>
                         <li class="nav-item"> <a href="#depoimentos" class="nav-link"><b>Depoimentos</b></a></li>
                     </ul>
-
-                    <a class="btn btn-white btn-icon">
+                    <!--Botão do carrinho, onde é adicionado os itens do cardapio-->
+                    <a class="btn btn-white btn-icon" onclick="cardapio.metodos.abrirCarrinho(true)">
                         Meu Carrinho <span class="icon">
+                            <div class="container-total-carrinho badge-total-carrinho hidden">0</div>
                             <i class="fa fa-shopping-bag"></i>
                         </span>
                     </a>
@@ -93,14 +104,13 @@
     </section>
 
     <section class="servicos" id="servicos">
-
         <div class="background-servicos"></div>
 
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
                     <span class="hint-title"><b>Serviços</b></span>
-                    <h1 class="title"><b>Como são nossos seriços?</b></h1>
+                    <h1 class="title"><b>Conheça como são nossos serviços?</b></h1>
                 </div>
 
                 <div class="col-4">
@@ -146,7 +156,6 @@
     </section>
 
     <section class="cardapio" id="cardapio">
-
         <div class="background-cardapio"></div>
 
         <div class="container">
@@ -157,7 +166,6 @@
                 </div>
 
                 <!--Menu do sistema, dividido por seções-->
-
                 <div class="col-12 container-menu">
                     <a id="menu-burgers" class="btn btn-white btn-sn mr-3 active" onclick="cardapio.metodos.obterItensCardapio('burgers')">
                         <i class="fas fa-hamburger"></i>&nbsp; Burguers
@@ -180,7 +188,6 @@
                 </div>
 
                 <!--Itens do cardápio-->
-
                 <div class="col-12">
                     <div class="row" id="itensCardapio">
 
@@ -188,7 +195,6 @@
                 </div>
 
                 <!--Botão ver mais-->
-
                 <div class="col-12 text-center">
                     <a id="btnVerMais" class="btn btn-white btn-sm" onclick="cardapio.metodos.vermais()">
                         Ver mais
@@ -196,6 +202,7 @@
                 </div>
     </section>
 
+    <!--Seção de depoimentos, com os principais depoimentos dos clientes-->
     <section class="depoimentos" id="depoimentos">
         <div class="background-depoimentos"></div>
 
@@ -213,7 +220,7 @@
                     <h1 class="title"><b>O que dizem sobre nós?</b></h1>
 
                     <div class="mb-5">
-
+                        <!--Primeiro depoimento do cliente Francisco Junior-->
                         <div class="depimento" id="depoimento-1">
                             <div class="container-dados-depoimento">
                                 <div class="imagem-depoimento"></div>
@@ -227,8 +234,8 @@
                                             <i class="fas fa-star-half-alt"></i>&nbsp; <span>4.5</span>
                                         </p>
                                     </div>
-                                </div>
-
+                            </div>
+                                <!--Depoimento numero do primeiro cliente-->
                                 <p class="texto-depoimento">
                                     <i class="fas fa-quote-left"></i>
                                     <span>
@@ -237,11 +244,10 @@
                                     </span>
                                     <i class="fas fa-quote-right"></i>
                                 </p>
-                            </div>
-
-                            
-                            <div class="depimento hidden" id="depoimento-2">
-
+                        </div>
+                        
+                        <!--Segundo depoimento da cliente Ana Beatriz-->
+                        <div class="depimento hidden" id="depoimento-2">
                             <div class="container-dados-depoimento">
                                 <div class="imagem-depoimento"></div>
                                     <div>
@@ -254,18 +260,20 @@
                                             <i class="fas fa-star"></i>&nbsp; <span>5.0</span>
                                         </p>
                                     </div>
-                                </div>
+                            </div>
 
+                                <!--Depoimento da segunda cliente do estabelecimento-->
                                 <p class="texto-depoimento">
                                     <i class="fas fa-quote-left"></i>
                                     <span>
-                                       Um jantar perfeito do início, comida, experiência, serviço...
-                                       Foi tão maravilhoso que fomos dois dias seguidos - fato inédito para mim em uma viagem.
+                                    Um jantar perfeito do início, comida, experiência, serviço...
+                                    Foi tão maravilhoso que fomos dois dias seguidos - fato inédito para mim em uma viagem.
                                     </span>
                                     <i class="fas fa-quote-right"></i>
                                 </p>
-                            </div>
+                        </div>
 
+                        <!--Segundo depoimento do cliente João Guilherme-->
                         <div class="depimento hidden" id="depoimento-3">
                             <div class="container-dados-depoimento">
                                 <div class="imagem-depoimento"></div>
@@ -279,17 +287,18 @@
                                             <i class="far fa-star"></i>&nbsp; <span>4.0</span>
                                         </p>
                                     </div>
-                                </div>
+                            </div>
 
+                                <!--Depoimento numero 03 do segundo cliente do estabelecimento-->
                                 <p class="texto-depoimento">
                                     <i class="fas fa-quote-left"></i>
                                     <span>
-                                       A comida estava excelente e o serviço gentil nos surprendeu!
-                                       dica: Reserve uma três horas antes para ter uma experiência incrivél.
+                                    A comida estava excelente e o serviço gentil nos surprendeu!
+                                    dica: Reserve uma três horas antes para ter uma experiência incrivél.
                                     </span>
                                     <i class="fas fa-quote-right"></i>
                                 </p>
-                            </div>
+                        </div>
                     </div>
 
                     <a class="btn btn-sm btn-white btn-social mr-3 active">1</a>
@@ -301,7 +310,6 @@
     </section>
 
     <!--Seção referente as solicitações e de reserva-->
-
     <section class="reserva" id="reservas">
         <div class="container">
             <div class="row">
@@ -334,7 +342,6 @@
     </section>
 
 <!--Rodapé do sistema-->
-
     <footer>
         <div class="container">
             <div class="row">
@@ -367,7 +374,7 @@
     <div class="modal-full hidden" id="modalCarrinho">
         <div class="m-header">
             <div class="container">
-                <a class="btn btn-white btn-sm float-right">
+                <a class="btn btn-white btn-sm float-right" onclick="cardapio.metodos.abrirCarrinho(false)">
                     Fechar
                 </a>
                 <div class="etapas">

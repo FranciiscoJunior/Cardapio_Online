@@ -6,6 +6,7 @@
     "axe/text-alternatives": "off",
     "axe/name-role-value": "off",
     "axe/parsing": "off",
-    "axe/forms": "off"
+    "axe/forms": "off",
+    "meta-charset-utf-8": "off"
   }
 }

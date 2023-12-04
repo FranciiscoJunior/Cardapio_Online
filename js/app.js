@@ -1,4 +1,4 @@
-$(document).ready(function(){
+    $(document).ready(function(){
     cardapio.eventos.init();
 })
 
@@ -49,7 +49,7 @@ cardapio.metodos = {
     },
 
     //Clicando no botão vermais
-    vermais: () =>{
+    vermais: () => {
         var ativo = $(".container-menu a.active").attr('id').split('menu-')[1]; //[menu-][burguers]
         cardapio.metodos.obterItensCardapio(ativo, true)
 
@@ -72,7 +72,7 @@ cardapio.metodos = {
     },
 
     //Pegar item do cardápio e adicionar ao carrinho
-    adiconarAoCarrinho: (id) =>{
+    adiconarAoCarrinho: (id) => {
         let qntdAtual = parseInt($("#qntd-" + id).txt());
 
         if (qntdAtual > 0){
@@ -104,11 +104,66 @@ cardapio.metodos = {
                     MEU_CARRINHO.push(item[0])
                 }
 
-                alert ("Item adicionado ao carrinho")
-                $("#qntd-" + id).txt(0)
+                cardapio.metodos.mensagem('Item adicionado ao carrinho', 'green');
+                $("#qntd-" + id).txt(0);
+
+                cardapio.metodos.atualizarBadgeTotal();
             }
         }
     },
+
+    //Atualizar o badge total dos botões do carrinho: "Meu carrinho"
+    atualizaBadgeTotal: () => {
+
+        var total = 0;
+
+        $.each(MEU_CARRINHO, (i, e) => {
+            total += e.qntd
+        })
+
+        if (total > 0){
+            $("botao-carrinho").removeClass('hidden')
+            $("container-total-carrinho").removeClass('hidden')
+        }
+
+        else {
+            $("botao-carrinho").addClass('hidden')
+            $("container-total-carrinho").addClass('hidden')
+        }
+
+        $(".badge-total-carrinho").html('total');
+    },
+
+
+    //Abrindo a modal de adicionar itens ao carrinho.
+    abrirCarrinho: (abrir) =>{
+
+        if(abrir){
+            $(#modalCarrinho).removeClass('hidden');
+        }
+
+        if(){
+            $(#modalCarrinho).addClass('hidden');
+        }
+    }
+
+    //Botão que cria o metódo de alerta de mensagem, que imprime o alerta ao adicionar um item no carrinho.
+    mensagem: (texto, cor = 'red', tempo = 3500) => {
+
+        let id = math.floor (Date.now() * Math.random()).toString();
+
+        let msg = `<div id="msg-${id}" class="animated fadeInDown toast $ {cor}">${texto}</div>`
+
+        $("#container-mensagem").append(msg);
+
+        setTimeout(() =>{
+            $("#msg-" + id).removeClass('fadeInDown');
+            $("#msg-" + id).addClass('fadeOutUp');
+            setTimeout(() => {
+                $("#msg-" + id).remove();
+            }, 800);
+        }, tempo)
+    }
 }
 
 cardapio.templates = {
