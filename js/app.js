@@ -92,7 +92,7 @@ cardapio.metodos = {
                 //Validação caso já haja item no carrinho
                 let existe = $.grep (MEU_CARRINHO, (elem, index) => {return elem.id == id});
 
-                //Quando existir itens no carrinho, epnas altera a quantidade.
+                //Quando existir itens no carrinho, apenas altera a quantidade.
                 if (existe.lenght > 0){
                     let objIndex = MEU_CARRINHO.findIndex ((obj => obj.id == id))
                     MEU_CARRINHO[objIndex].qntd = MEU_CARRINHO[objIndex].qntd + qntdAtual;
@@ -134,18 +134,75 @@ cardapio.metodos = {
         $(".badge-total-carrinho").html('total');
     },
 
-
     //Abrindo a modal de adicionar itens ao carrinho.
     abrirCarrinho: (abrir) =>{
 
         if(abrir){
-            $(#modalCarrinho).removeClass('hidden');
+            $("#modalCarrinho").removeClass('hidden');
+            cardapio.metodos.carregarEtapa(1);
         }
 
-        if(){
-            $(#modalCarrinho).addClass('hidden');
+        else {
+            $("#modalCarrinho").addClass('hidden');
         }
-    }
+    },
+
+    //Alterando os textos e exibindo botões das etapas
+    carregarEtapa: (etapa) =>{
+        if (etapa == 1) {
+            $("#lblTituloEntrega").text('seu carrinho:');
+            $("#itensCarrinho").removeClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumoCarrinho").addClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+
+            $("#btnEtapaPedido").removeClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnVoltar").addClass('hidden');
+        }
+
+        if (etapa == 2) {
+            $("#lblTituloEntrega").text('Endereco de entrega:');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").removeClass('hidden');
+            $("#resumoCarrinho").addClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
+
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").removeClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnVoltar").removeClass('hidden');
+        }
+
+        if (etapa == 3) {
+            $("#lblTituloEntrega").text('Resumo do pedido:');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumoCarrinho").removeClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
+            $(".etapa3").addClass('active');
+
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").removeClass('hidden');
+            $("#btnVoltar").removeClass('hidden');
+        }
+    },
+
+    //Acionando o botão voltar etapa
+    voltarEtapa: () => {
+        let etapa = $(".etapa.active").lenght;
+        cardapio.metodos.carregarEtapa(etapa - 1);
+    },
 
     //Botão que cria o metódo de alerta de mensagem, que imprime o alerta ao adicionar um item no carrinho.
     mensagem: (texto, cor = 'red', tempo = 3500) => {
