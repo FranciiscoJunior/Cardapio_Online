@@ -746,7 +746,7 @@ a.navbar-brand{
     padding: 10px 25px;
     font-size: 18px;
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .tost-red {
@@ -756,3 +756,23 @@ a.navbar-brand{
 .tost-green {
     background-color: var(--color-green);
 }
+
+.carrinho-vazio{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.carrinho-vazio i{
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-secondary);
+    color: var(--color-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
