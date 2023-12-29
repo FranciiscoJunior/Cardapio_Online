@@ -6,6 +6,9 @@ var cardapio = {};
 
 var MEU_CARRINHO = [];
 
+var VALOR_CARRINHO = [];
+var VALOR_ENTREGA = 5;
+
 // Inicializando itens do cardapio
 cardapio.eventos = {
     init: () =>{
@@ -217,11 +220,17 @@ cardapio.metodos = {
             .replace(/\${qntd}/g, e.qntd)
 
             $("#itensCarrinho").append(temp);
+
+            //Ultimo item 
+            if ((i + 1) == MEU_CARRINHO.length){
+                cardapio.metodos.carregarValores();
+            }
         })
     }
 
     else{
         $("#itensCarrinho").html('<p class"carrinho-vazio"><i class="fa fa-shopping-bag></i>Seu carrinho está vazio</p>');
+        cardapio.metodos.carregarValores();
     }
 
     },
@@ -265,6 +274,84 @@ cardapio.metodos = {
 
         //Atualizando a quantidade total de itens adicionado
         cardapio.metodos.atualizaBadgeTotal();
+
+        //Atualizar valores (R$) total final na compra
+        cardapio.metodos.carregarValores();
+    },
+
+    //Carrega os valores de subtotal, entrega e total
+    carregarValores: () =>{
+    
+        VALOR_CARRINHO = 0;
+
+        $("#lblSubTotal").text('R$ 0,00');
+        $("#lblValorEntrega").text('+ R$ 0,00');
+        $("#lblValorTotal").text('R$ 0,00');
+
+        $.each(MEU_CARRINHO, (i, e) => {
+            
+            VALOR_CARRINHO += parseFloat(e.price * e.qntd);
+
+            if ((i + 1) == MEU_CARRINHO.length){
+                $("#lblSubTotal").text(`R$ ${VALOR_CARRINHO.toFixed(2).replace('.', ',')}`);
+                $("#lblValorEntrega").text(`+ R$ ${VALOR_ENTREGA.toFixed(2).replace('.',',')}`);
+                $("#lblValorTotal").text(`R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.',',')}`);
+            }
+        })
+    },
+
+    //Carregar a etapa com o respectivo endereço de entrega
+    carregarEndereco: () =>{
+        if (MEU_CARRINHO.length <= 0){
+            cardapio.metodos.mensagem('O carrinho está vazio')
+            return;
+        }
+
+        cardapio.metodos.carregarEtapa(2);
+    },
+
+    //API buscar CEP
+    buscarCEP: () =>{
+
+        //Criando uma variavel com o valor do cep
+        var cep = $('#txtCEP').val().trim().replace(/\D/g, '');
+
+        if(cep != ""){
+
+            //Expressão regular usando regex para validar CEP
+            var validacep = /^[0-9]{b}$/;
+
+            if (validacep.test(cep)){
+
+                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados){
+                    if (!("erro" in dados)){
+
+                        //Atualizando o campo e retornando valores
+                        $("txtEndereco").val(dado.logradouro);
+                        $("txtBairro").val(dado.bairro);
+                        $("txtCidade").val(dado.localidade);
+                        $("txtUF").val(dado.uf);
+                        $("txtNumero").focus();
+                    }
+
+                    else{
+                        cardapio.metodos.mensagem('Cep não encontrado. Preencha as informações manualmente');
+                        $("#txtEndereco").focus();
+                    }
+                })
+            }
+
+            else{
+                cardapio.metodos.mensagem('Formato de cep invalido. ');
+                $("#txtCEP").focus();
+            }
+
+        }
+
+        else{
+            cardapio.metodos.mensagem('Informe seu CEP. ');
+            $("#txtCEP").focus();
+        }
     },
 
     //Botão que cria o metódo de alerta de mensagem, que imprime o alerta ao adicionar um item no carrinho.
