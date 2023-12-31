@@ -5,6 +5,7 @@
 var cardapio = {};
 
 var MEU_CARRINHO = [];
+var MEU_ENDERECO = null;
 
 var VALOR_CARRINHO = [];
 var VALOR_ENTREGA = 5;
@@ -285,7 +286,7 @@ cardapio.metodos = {
         VALOR_CARRINHO = 0;
 
         $("#lblSubTotal").text('R$ 0,00');
-        $("#lblValorEntrega").text('+ R$ 0,00');
+        $("#lblValorEntrega").text('+ R$ 5,00');
         $("#lblValorTotal").text('R$ 0,00');
 
         $.each(MEU_CARRINHO, (i, e) => {
@@ -327,11 +328,11 @@ cardapio.metodos = {
                     if (!("erro" in dados)){
 
                         //Atualizando o campo e retornando valores
-                        $("txtEndereco").val(dado.logradouro);
-                        $("txtBairro").val(dado.bairro);
-                        $("txtCidade").val(dado.localidade);
-                        $("txtUF").val(dado.uf);
-                        $("txtNumero").focus();
+                        $("#txtEndereco").val(dado.logradouro);
+                        $("#txtBairro").val(dado.bairro);
+                        $("#txtCidade").val(dado.localidade);
+                        $("#ddlUF").val(dado.uf);
+                        $("#txtNumero").focus();
                     }
 
                     else{
@@ -352,6 +353,91 @@ cardapio.metodos = {
             cardapio.metodos.mensagem('Informe seu CEP. ');
             $("#txtCEP").focus();
         }
+    },
+
+    //Resumo antes de prosseguir e finalizar a compra 
+    resumoPedidio: () => {
+
+        let cep = $("#txtCEP").val().trim();
+        let endereco = $("#txtEndereco").val().trim();
+        let bairro = $("#txtBairro").val().trim();
+        let cidade = $("#txtCidade").val().trim();
+        let uf = $("#ddlUF").val().trim();
+        let numero = $("#txtNumero").val().trim();
+        let complemento = $("#txtComplemento").val().trim();
+
+        if (cep.lenght <= 0){
+            cardapio.metodos.mensagem('Informe o Cep, por favor. ');
+            $("#txtCEP").focus();
+            return 0;
+        }
+
+        if (endereco.lenght <= 0){
+            cardapio.metodos.mensagem('Informe o seu endereco, por favor. ');
+            $("#txtEndereco").focus();
+            return 0;
+        }
+
+        if (bairro.lenght <= 0){
+            cardapio.metodos.mensagem('Informe o seu bairro, por favor. ');
+            $("#txtBairro").focus();
+            return 0;
+        }
+
+        if (cidade.lenght <= 0){
+            cardapio.metodos.mensagem('Informe a sua cidade, por favor. ');
+            $("#txtCidade").focus();
+            return 0;
+        }
+
+        if (uf == "-1"){
+            cardapio.metodos.mensagem('Informe o seu estado, por favor. ');
+            $("#ddlUF").focus();
+            return 0;
+        }
+
+        if (numero.lenght <= 0){
+            cardapio.metodos.mensagem('Informe o numero, por favor. ');
+            $("#txtNumero").focus();
+            return 0;
+        }
+
+        if (complemento.lenght <= 0){
+            cardapio.metodos.mensagem('Informe o complemento, por favor. ');
+            $("#txtComplemento").focus();
+            return 0;
+        }
+
+        MEU_ENDERECO = {
+            cep: cep,
+            endereco: endereco,
+            bairro: bairro,
+            cidade: cidade,
+            uf: uf,
+            numero: numero,
+            complemento: complemento
+        }
+
+        cardapio.metodos.carregarEtapa(3);
+        cardapio.metodos.carregarResumo();
+    },
+
+    //Carregando a etapa de resumo do pedido 
+    carregarResumo: () => {
+
+        //Limpando a lista de itens da fila, para permanecer vazia sempre que a função inicializar.
+        $("#listaItensResumo").html('');
+
+        $.each(MEU_CARRINHO, (i, e) => {
+
+            let temp = cardapio.templates.itemResumo.replace(/\${img}/g, e.img)
+            .replace(/\${img}/g, e.name)
+            .replace(/\${preco}/g, e.price.toFixed(2).replace('.', ','))
+            .replace(/\${qntd}/g, e.qntd)
+
+            $("#listaItensResumo").append(temp);
+
+        })
     },
 
     //Botão que cria o metódo de alerta de mensagem, que imprime o alerta ao adicionar um item no carrinho.
@@ -414,5 +500,23 @@ cardapio.templates = {
                     <span class="btn btn-remove" onclick="cardapio.metodos.removerItemCarrinho('\${id}')"><i class="fa fa-times"></i></span>
                 </div>
             </div>
+        `,
+
+        itemResumo: `
+        <div class="col-12 item-carrinho resumo">
+                                <div class="img-produto-resumo">
+                                    <img src="\${img}"/>
+                                </div>
+                                <div class="dados-produto">
+                                    <p class="title-produto-resumo">
+                                        <b>\${nome}</b>
+                                    </p>
+                                    <p class="price-produto-resumo">
+                                        <b>R$ \${preco}</b>
+                                    </p>
+                                </div>
+                                <p class="quantidade-produto-resumo">
+                                    x <b>\${qntd}</b>
+                                </p>
         `
 }
