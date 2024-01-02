@@ -66,7 +66,7 @@
                             <a href="#cardapio" class="btn btn-yellow mt-4 mr-3"> 
                                 Ver cardápio
                             </a>
-                            <a href="#" class="btn btn-white btn-icon-left mt-4">
+                            <a href="#" class="btn btn-white btn-icon-left mt-4" id="btnLigar">
                                 <span class="icon-left">
                                     <i class="fa fa-phone"></i>
                                 </span>
@@ -77,10 +77,10 @@
                     <a class="btn btn-sm btn-white btn-social mt-4 mr-3">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a class="btn btn-sm btn-white btn-social mt-4 mr-3">
+                    <a href="https://www.facebook.com/profile.php?id=100073220302825" target="_blank" class="btn btn-sm btn-white btn-social mt-4 mr-3">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="btn btn-sm btn-white btn-social mt-4">
+                    <a href="wa.me" class="btn btn-sm btn-white btn-social mt-4">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -301,9 +301,9 @@
                         </div>
                     </div>
 
-                    <a class="btn btn-sm btn-white btn-social mr-3 active">1</a>
-                    <a class="btn btn-sm btn-white btn-social mr-3">2</a>
-                    <a class="btn btn-sm btn-white btn-social">3</a>
+                    <a id="btnDepoimento-1" class="btn btn-sm btn-white btn-social mr-3 active" onclick="cardapio.metodos.abrirDepoimento(1)">1</a>
+                    <a id="btnDepoimento-2" class="btn btn-sm btn-white btn-social mr-3" onclick="cardapio.metodos.abrirDepoimento(2)">2</a>
+                    <a id="btnDepoimento-3" class="btn btn-sm btn-white btn-social" onclick="cardapio.metodos.abrirDepoimento(3)">3</a>
                 </div>
             </div>
         </div>
@@ -324,7 +324,7 @@
                                     <br>
                                     Reserve seu horário de forma simples e rapída.
                                 </p>
-                                <a class="btn btn-yellow mt-4">
+                                <a class="btn btn-yellow mt-4" href="#" id="btnReserva" target="_blank">
                                     Fazer reserva
                                 </a>
                             </div>
@@ -358,13 +358,13 @@
                 
                 <!--Botões das redes sociais-->
                 <div class="col-3 container-redes-footer">
-                    <a class="btn btn-sn btn-white btn-social mt-4 mr-3">
+                    <a class="btn btn-sn btn-white btn-social mr-3">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a class="btn btn-sn btn-white btn-social mt-4 mr-3">
+                    <a class="btn btn-sn btn-white btn-social mr-3">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="btn btn-sn btn-white btn-social mt-4 mr-3">
+                    <a class="btn btn-sn btn-white btn-social">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -591,11 +591,10 @@
 
                         <div class="dados-produto">
                             <p class="texto-endereco">
-                                <b id="resumo-Endereco">Rua Santo Antônio, 54, Bairro Nova Esperança</b>
+                                <b id="resumo-Endereco"></b>
                             </p>
 
                             <p class="cidade-endereco" id="cidadeEndereco">
-                                Cerro Corá - RN / 59395-000
                             </p>
                         </div>
                     </div>
@@ -629,7 +628,7 @@
                         Revisar pedido
                     </a>
 
-                    <a class="btn btn-yellow float-right hidden" id="btnEtapaResumo">
+                    <a href="#" class="btn btn-yellow float-right hidden" id="btnEtapaResumo" target="_blank">
                         Enviar pedido
                     </a>
 
