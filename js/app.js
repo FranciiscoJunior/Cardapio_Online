@@ -511,6 +511,8 @@ cardapio.metodos = {
         $("#btndepoimento-" + depoimento).addClass('active');
     },
 
+
+
     //Botão que cria o metódo de alerta de mensagem, que imprime o alerta ao adicionar um item no carrinho.
     mensagem: (texto, cor = 'red', tempo = 3500) => {
 
@@ -532,7 +534,7 @@ cardapio.metodos = {
 
 cardapio.templates = {
     item: `
-                        <div class="col-3 mb-5">
+                        <div class="col-3 mb-5 animated fadeInUp">
                             <div class="card card-item" id="\${id}">
                                 <div class="img-produto">
                                     <img src="\${img}">
