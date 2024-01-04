@@ -1,10 +1,10 @@
 @font-face {
-    font-family: 'poppinsMediun';
+    font-family: 'PoppinsMediun';
     src: url('../fonts/Poppins-Medium.otf');
 }
 
 @font-face {
-    font-family: 'poppinsRegular';
+    font-family: 'PoppinsRegular';
     src: url('../fonts/Poppins-Regular.otf');
 }
 
@@ -45,7 +45,7 @@ a.navbar-brand{
 }
 
 .nav-link{
-    color: var(--color-blank)!important;
+    color: var(--color-black)!important;
     padding-left: 35px!important;
     padding-right: 35px!important;
 }
@@ -114,7 +114,7 @@ a.navbar-brand{
 }
 
 .btn-icon-left{
-    padding: 15px 55px;
+    padding-left: 70px;
 }
 
 .btn-icon-left span.icon-left{
@@ -124,7 +124,7 @@ a.navbar-brand{
     width: 45px;
     height: 45px;
     position: absolute;
-    margin-left: -80px;
+    margin-left: -60px;
     margin-top: -8px;
     border-radius: 15px;
     text-align: center;
@@ -299,7 +299,7 @@ a.navbar-brand{
     cursor: pointer;
 }
 
-.btn-numero-itens{
+.add-numero-itens{
     color: var(--color-black-heavy);
     padding: 2px 15px;
     border-top: 2px solid var(--color-black-heavy);
@@ -364,7 +364,7 @@ a.navbar-brand{
     margin-top: 70px;
 }
 
-.imagem-depoimento{
+.imagem-depoimento {
     width: 65px;
     height: 65px;
     background-color: var(--color-white);
@@ -403,7 +403,7 @@ a.navbar-brand{
     color: var(--color-black);
 }
 
-.texto-depoimento{
+.texto-depoimento {
     display: flex;
     font-size: 16px;
     color: var(--color-black);
@@ -459,7 +459,7 @@ footer{
     width: 150px;
 }
 
-.container-logo-footer, .container-texto-footer, .container-redes-footer{
+.container-logo-footer, .container-texto-footer, .container-redes-footer {
     display: flex;
     align-items: center;
 }
@@ -491,7 +491,7 @@ footer{
     flex-direction: column;
 }
 
-.m-reader{
+.m-header{
     padding-bottom: 20px;
 }
 
@@ -558,19 +558,20 @@ footer{
     justify-content: center;
     align-items: center;
     padding-top: 20px;
-    border-bottom: var(--color-separate);
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-separate);
 }
 
-.modal-full .item-carrinho:last-child{
+.modal-full .item-carrinho:last-child {
     border-bottom: none;
 }
 
-.modal-full .img-produto{
+.modal-full .img-produto {
     width: 100px;
     border-radius: 11px;
 }
 
-.modal-full .title-produto{
+.modal-full .title-produto {
     color: var(--color-black);
     font-size: 20px;
     text-overflow: ellipsis;
@@ -587,8 +588,8 @@ footer{
 
 .modal-full .dados-produto{
     flex: 1;
-    padding-left: 225px;
-    padding-right: 225px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 .modal-full .add-carrinho{
@@ -639,7 +640,7 @@ footer{
     border: none!important;
 }
 
-.form-control{
+select.form-control{
     height: 60px!important;
 }
 
@@ -669,7 +670,7 @@ footer{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .price-produto-resumo{
@@ -721,7 +722,7 @@ footer{
     align-items: center;
 }
 
-.botao-carrinho{
+.botao-carrinho {
     position: fixed;
     right: 30px;
     bottom: 50px;
@@ -754,21 +755,21 @@ footer{
     margin-bottom: 10px;
 }
 
-.tost-red {
+.tost-red.red {
     background-color: var(--color-red);
 }
 
-.tost-green {
+.tost-green.green {
     background-color: var(--color-green);
 }
 
-.carrinho-vazio{
+.carrinho-vazio {
     margin: 0 auto;
     text-align: center;
     margin-top: 50px;
 }
 
-.carrinho-vazio i{
+.carrinho-vazio i {
     width: 50px;
     height: 50px;
     background-color: var(--color-secondary);
@@ -780,4 +781,3 @@ footer{
     border-radius: 50px;
     margin-bottom: 10px;
 }
-

@@ -23,7 +23,7 @@ cardapio.eventos = {
 
 cardapio.metodos = {
     // obtem a lista de itens do cardapio
-    obterItensCardapio: (categoria = 'burgers', vermais = false) =>{
+    obterItensCardapio: (categoria = 'burgers', vermais = false) => {
 
         var filtro = MENU [categoria];
         console.log(filtro);
@@ -33,7 +33,7 @@ cardapio.metodos = {
             $("#btnVerMais").removeClass('hidden');
         }
 
-        $.each(filtro, (i, e) =>{
+        $.each(filtro, (i, e) => {
             let temp = cardapio.templates.item.replace(/\${img}/g, e.img)
             .replace(/\${nome}/g, e.name)
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.',','))
