@@ -24,17 +24,21 @@ cardapio.eventos = {
 cardapio.metodos = {
     // obtem a lista de itens do cardapio
     obterItensCardapio: (categoria = 'burgers', vermais = false) =>{
+
         var filtro = MENU [categoria];
         console.log(filtro);
+
         if(!vermais){
             $("#itensCardapio").html('');
             $("#btnVerMais").removeClass('hidden');
         }
+
         $.each(filtro, (i, e) =>{
             let temp = cardapio.templates.item.replace(/\${img}/g, e.img)
             .replace(/\${nome}/g, e.name)
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.',','))
             .replace(/\${id}/g, e.id)
+
             //Botão ver mais acionado (12 itens).
             if(vermais && i>= 8 && i < 12){
                 $("#itensCardapio").append(temp)
@@ -461,20 +465,16 @@ cardapio.metodos = {
             texto += `\n\n *Total (Com entrega): R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.', ',')}*`;
 
             var itens = '';
-
-            $.each(MEU_CARRINHO, (e, i) =>{
-
+            $.each(MEU_CARRINHO, (i, e) => {
                 itens += `*${e.qntd}X* ${e.name} ....... R$ ${e.price.toFixed(2).replace('.', ',')} \n`;
 
                 //Enviar pedido
                 if ((i + 1) == MEU_CARRINHO.length){
-
                     texto = texto.replace(/\${itens}/g, itens);
 
                     //Convertendo a URL
                     let encode = encodeURI(texto);
                     let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
-
                     $("#btnEtapaResumo").attr('href', URL);
                 }
             })
@@ -482,7 +482,7 @@ cardapio.metodos = {
     },
 
     //Carregando o link do botão reserva
-    carregarBotaoReserva: () =>{
+    carregarBotaoReserva: () => {
 
         var texto = 'Olá, gostária de fazer uma *reserva*';
 
@@ -518,7 +518,7 @@ cardapio.metodos = {
 
         let id = math.floor (Date.now() * Math.random()).toString();
 
-        let msg = `<div id="msg-${id}" class="animated fadeInDown toast $ {cor}">${texto}</div>`
+        let msg = `<div id="msg-${id}" class="animated fadeInDown toast $ {cor}">${texto}</div>`;
 
         $("#container-mensagem").append(msg);
 
@@ -534,7 +534,7 @@ cardapio.metodos = {
 
 cardapio.templates = {
     item: `
-                        <div class="col-3 mb-5 animated fadeInUp">
+                        <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
                             <div class="card card-item" id="\${id}">
                                 <div class="img-produto">
                                     <img src="\${img}">
@@ -570,7 +570,7 @@ cardapio.templates = {
                 <span class="btn btn-menos" onclick="cardapio.metodos.diminuirQuantidadeCarrinho('\${id}')"><i class="fas fa-minus"></i></span>
                 <span class="btn btn-numero-itens" id="qntd-carrinho\${id}">\${qntd}</span>
                 <span class="btn btn-mais" onclick="cardapio.metodos.aumentarQuantidadeCarrinho('\${id}')"><i class="fas fa-plus"></i></span>
-                    <span class="btn btn-remove" onclick="cardapio.metodos.removerItemCarrinho('\${id}')"><i class="fa fa-times"></i></span>
+                    <span class="btn btn-remove no-mobile" onclick="cardapio.metodos.removerItemCarrinho('\${id}')"><i class="fa fa-times"></i></span>
                 </div>
             </div>
         `,
