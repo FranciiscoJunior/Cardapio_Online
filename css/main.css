@@ -472,8 +472,11 @@ footer{
     justify-content: center;
 }
 
-.container-redes-footer{
+.container-redes-footer .btn-social{
     fy-content: end;
+    padding: 9px 15px!important;
+    border-radius: 15px!important;
+    font-size: 18px!important;
 }
 
 .modal-full{
