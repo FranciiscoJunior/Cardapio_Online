@@ -118,7 +118,7 @@ cardapio.metodos = {
     },
 
     //Atualizar o badge total dos botões do carrinho: "Meu carrinho"
-    atualizaBadgeTotal: () => {
+    atualizarBadgeTotal: () => {
 
         var total = 0;
 
@@ -272,7 +272,7 @@ cardapio.metodos = {
         cardapio.metodos.carregarCarrinho();
 
         //Atualizando a quantidade total de itens adicionado
-        cardapio.metodos.atualizaBadgeTotal();
+        cardapio.metodos.atualizarBadgeTotal();
     },
 
     //Atualizando carrinho com a quantidade atual de itens
@@ -282,7 +282,7 @@ cardapio.metodos = {
         MEU_CARRINHO[objIndex].qntd = qntd;
 
         //Atualizando a quantidade total de itens adicionado
-        cardapio.metodos.atualizaBadgeTotal();
+        cardapio.metodos.atualizarBadgeTotal();
 
         //Atualizar valores (R$) total final na compra
         cardapio.metodos.carregarValores();
@@ -456,7 +456,6 @@ cardapio.metodos = {
     //Atualizando o link do botão Whatsapp
     finalizarPedido: ()=> {
         if (MEU_CARRINHO.length > 0 && MEU_ENDERECO != null){
-
             var texto = 'Olá, gostaria de fazer um pedido:';
             texto += `\n *Itens do pedido:*\n\n\${itens}`;
             texto += '\n*Endereco de entrega: *';
@@ -490,6 +489,7 @@ cardapio.metodos = {
         let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
 
         $("#btnReserva").attr('href', URL);
+
     },
 
     //Carregando o botão para fazer ligação ao estabelecimento
@@ -498,10 +498,12 @@ cardapio.metodos = {
         $("#btnLigar").attr('href', `tel:${CELULAR_EMPRESA}`);
     },
 
+    //Abre a seção de depoimentos
     abrirDepoimento: (depoimento) => {
-        $("depoimento-1").addClass('hidden');
-        $("depoimento-2").addClass('hidden');
-        $("depoimento-3").addClass('hidden');
+
+        $("#depoimento-1").addClass('hidden');
+        $("#depoimento-2").addClass('hidden');
+        $("#depoimento-3").addClass('hidden');
 
         $("btndepoimento-1").removeClass('active');
         $("btndepoimento-2").removeClass('active');
@@ -509,6 +511,7 @@ cardapio.metodos = {
 
         $("#depoimento-" + depoimento).removeClass('hidden');
         $("#btndepoimento-" + depoimento).addClass('active');
+
     },
 
 
@@ -534,34 +537,33 @@ cardapio.metodos = {
 
 cardapio.templates = {
     item: `
-                        <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
-                            <div class="card card-item" id="\${id}">
-                                <div class="img-produto">
-                                    <img src="\${img}">
-                                </div>
-                                <p class="title-produto text-center mt-4">
-                                    <b>\${nome}</b>
-                                </p>
-                                <p class="price-produto text-center">
-                                    <b>R$ \${preco}</b>
-                                </p>
+        <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
+            <div class="card card-item" id="\${id}">
+                <div class="img-produto">
+                    <img src="\${img}">
+                </div>
+                <p class="title-produto text-center mt-4">
+                    <b>\${nome}</b>
+                </p>
+                <p class="price-produto text-center">
+                    <b>R$ \${preco}</b>
+                </p>
 
-                                <div class="add-carrinho">
-                                    <span class="btn btn-menos" onclick="cardapio.metodos.diminuirQuantidade('\${id}')"><i class="fas fa-minus"></i></span>
-                                    <span class="btn btn-numero-itens" id="qntd-\${id}">0</span>
-
-                                    <span class="btn btn-mais" onclick="cardapio.metodos.aumentarQuantidade('\${id}')"><i class="fas fa-plus"></i></span>
-                                    <span class="btn btn-add" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')"><i class="fa fa-shopping-bag"></i></span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="add-carrinho">
+                    <span class="btn btn-menos" onclick="cardapio.metodos.diminuirQuantidade('\${id}')"><i class="fas fa-minus"></i></span>
+                    <span class="btn btn-numero-itens" id="qntd-\${id}">0</span>
+                    <span class="btn btn-mais" onclick="cardapio.metodos.aumentarQuantidade('\${id}')"><i class="fas fa-plus"></i></span>
+                    <span class="btn btn-add" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')"><i class="fa fa-shopping-bag"></i></span>
+                </div>
+            </div>
+        </div>
         `,
 
-        itemCarrinho: `
-                <div class="col-12 item-carrinho">
-                <div class="img-produto">
-                    <img src="\${img}"/>
-                </div>
+itemCarrinho: `
+        <div class="col-12 item-carrinho">
+            <div class="img-produto">
+                <img src="\${img}"/>
+            </div>
                 <div class="dados-produto">
                     <p class="title-produto"><b>\${nome}</b></p>
                     <p class="price-produto"><b>\${preco}</b></p>
@@ -591,5 +593,6 @@ cardapio.templates = {
                                 <p class="quantidade-produto-resumo">
                                     x <b>\${qntd}</b>
                                 </p>
+                            </div>
         `
 }

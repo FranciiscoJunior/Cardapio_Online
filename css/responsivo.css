@@ -14,6 +14,7 @@
 
 /*Tablets e celulares (col) 0px a 767px */
 @media (max-width: 767px){
+
     .no-mobile{
         display: none!important;
     }
@@ -102,7 +103,6 @@
         height: 110px;
         padding-left:110px;
         justify-content: center;
-        align-items: center;
         align-items: start;
     }
 
@@ -193,4 +193,5 @@
     .modal-full .form-control{
         font-size: 16px;
     }
+    
 }
