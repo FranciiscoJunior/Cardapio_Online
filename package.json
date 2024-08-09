@@ -1,0 +1,11 @@
+{
+  "name": "clear",
+  "version": "1.0.0",
+  "description": "Este respectivo projeto, trata-se de um sistema de lanchonete On-line, onde o usuário ele poderá acessar diversas funcionalidades táis como a seção de reservas, serviços, cardápio e depoimento.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Francisco Junior",
+  "license": "ISC"
+}

@@ -177,5 +177,7 @@
         "viagem",
         "Você",
         "Voltar"
-    ]
+    ],
+    "commentTranslate.targetLanguage": "pt",
+    "liveServer.settings.port": 5501
 }

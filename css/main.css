@@ -284,7 +284,7 @@ a.navbar-brand {
     border: 2px solid var(--color-black-heavy);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    font-size: 14px;
+    font-size: 14p;
     cursor: pointer;
 }
 
@@ -332,7 +332,6 @@ a.navbar-brand {
     color: var(--color-black-heavy)!important;
     margin-top: 20px;
 }
-
 
 .depoimentos {
     padding-top: 100px;

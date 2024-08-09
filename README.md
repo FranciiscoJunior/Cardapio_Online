@@ -1,7 +1,7 @@
 
 # Cardápio On-line
 
-Este respectivo projeto, trata-se de um sistema de lanchonete On-line, onde o usuário ele poderá acessar diversas funcionalidade táis como a seção de reservas, serviços, cardápio e depoimento.
+Este respectivo projeto, trata-se de um sistema de lanchonete On-line, onde o usuário ele poderá acessar diversas funcionalidades táis como a seção de reservas, serviços, cardápio e depoimento.
 
 Seção reservas: O usário poderá agendar ou solicitar um serviços através do whatsapp;
 
