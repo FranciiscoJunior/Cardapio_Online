@@ -68,7 +68,6 @@ cardapio.metodos = {
         cardapio.metodos.obterItensCardapio(ativo, true);
 
         $("#btnVerMais").addClass('hidden');
-
     },
 
     // diminuir a quantidade do item no cardapio
@@ -120,13 +119,12 @@ cardapio.metodos = {
                 else {
                     item[0].qntd = qntdAtual;
                     MEU_CARRINHO.push(item[0])
-                }      
+                }
                 
                 cardapio.metodos.mensagem('Item adicionado ao carrinho', 'green')
                 $("#qntd-" + id).text(0);
 
                 cardapio.metodos.atualizarBadgeTotal();
-
             }
 
         }
@@ -147,7 +145,7 @@ cardapio.metodos = {
             $(".container-total-carrinho").removeClass('hidden');
         }
         else {
-            $(".botao-carrinho").addClass('hidden')
+            $(".botao-carrinho").addClass('hidden');
             $(".container-total-carrinho").addClass('hidden');
         }
 
@@ -218,7 +216,6 @@ cardapio.metodos = {
             $("#btnEtapaResumo").removeClass('hidden');
             $("#btnVoltar").removeClass('hidden');
         }
-
     },
 
     // botão de voltar etapa
@@ -256,6 +253,7 @@ cardapio.metodos = {
             })
 
         }
+
         else {
             $("#itensCarrinho").html('<p class="carrinho-vazio"><i class="fa fa-shopping-bag"></i> Seu carrinho está vazio.</p>');
             cardapio.metodos.carregarValores();
@@ -344,7 +342,6 @@ cardapio.metodos = {
         } 
 
         cardapio.metodos.carregarEtapa(2);
-
     },
 
     // API ViaCEP
@@ -371,8 +368,8 @@ cardapio.metodos = {
                         $("#txtCidade").val(dados.localidade);
                         $("#ddlUf").val(dados.uf);
                         $("#txtNumero").focus();
-
                     }
+                    
                     else {
                         cardapio.metodos.mensagem('CEP não encontrado. Preencha as informações manualmente.');
                         $("#txtEndereco").focus();
