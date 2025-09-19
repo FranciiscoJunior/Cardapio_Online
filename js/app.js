@@ -13,7 +13,6 @@ var VALOR_ENTREGA = 5.0;
 var CELULAR_EMPRESA = '55849183-4727';
 
 cardapio.eventos = {
-
     init: () => {
         cardapio.metodos.obterItensCardapio();
         cardapio.metodos.carregarBotaoLigar();
@@ -35,7 +34,6 @@ cardapio.metodos = {
         }
 
         $.each(filtro, (i, e) => {
-
             let temp = cardapio.templates.item.replace(/\${img}/g, e.img)
             .replace(/\${nome}/g, e.name)
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.', ','))
@@ -50,20 +48,16 @@ cardapio.metodos = {
             if (!vermais && i < 8) {
                 $("#itensCardapio").append(temp)
             }
-
         })
 
         // remove o ativo
         $(".container-menu a").removeClass('active');
-
         // seta o menu para ativo
         $("#menu-" + categoria).addClass('active')
-
     },
 
     // clique no botão de ver mais
     verMais: () => {
-
         var ativo = $(".container-menu a.active").attr('id').split('menu-')[1];
         cardapio.metodos.obterItensCardapio(ativo, true);
 
@@ -72,21 +66,17 @@ cardapio.metodos = {
 
     // diminuir a quantidade do item no cardapio
     diminuirQuantidade: (id) => {
-
         let qntdAtual = parseInt($("#qntd-" + id).text());
 
         if (qntdAtual > 0) {
             $("#qntd-" + id).text(qntdAtual - 1)
         }
-
     },
 
     // aumentar a quantidade do item no cardapio
     aumentarQuantidade: (id) => {
-
         let qntdAtual = parseInt($("#qntd-" + id).text());
         $("#qntd-" + id).text(qntdAtual + 1)
-
     },
 
     // adicionar ao carrinho o item do cardápio
@@ -133,7 +123,6 @@ cardapio.metodos = {
 
     // atualiza o badge de totais dos botões "Meu carrinho"
     atualizarBadgeTotal: () => {
-
         var total = 0;
 
         $.each(MEU_CARRINHO, (i, e) => {
@@ -144,13 +133,13 @@ cardapio.metodos = {
             $(".botao-carrinho").removeClass('hidden');
             $(".container-total-carrinho").removeClass('hidden');
         }
+
         else {
             $(".botao-carrinho").addClass('hidden');
             $(".container-total-carrinho").addClass('hidden');
         }
 
         $(".badge-total-carrinho").html(total);
-
     },
 
     // abrir a modal de carrinho
@@ -160,15 +149,14 @@ cardapio.metodos = {
             $("#modalCarrinho").removeClass('hidden');
             cardapio.metodos.carregarCarrinho();
         }
+
         else {
             $("#modalCarrinho").addClass('hidden');
         }
-
     },
 
     // altera os texto e exibe os botões das etapas
     carregarEtapa: (etapa) => {
-
         if (etapa == 1) {
             $("#lblTituloEtapa").text('Seu carrinho:');
             $("#itensCarrinho").removeClass('hidden');
@@ -220,10 +208,8 @@ cardapio.metodos = {
 
     // botão de voltar etapa
     voltarEtapa: () => {
-
         let etapa = $(".etapa.active").length;
         cardapio.metodos.carregarEtapa(etapa - 1);
-
     },
 
     // carrega a lista de itens do carrinho
@@ -258,7 +244,6 @@ cardapio.metodos = {
             $("#itensCarrinho").html('<p class="carrinho-vazio"><i class="fa fa-shopping-bag"></i> Seu carrinho está vazio.</p>');
             cardapio.metodos.carregarValores();
         }
-
     },
 
     // diminuir quantidade do item no carrinho
@@ -270,30 +255,26 @@ cardapio.metodos = {
             $("#qntd-carrinho-" + id).text(qntdAtual - 1);
             cardapio.metodos.atualizarCarrinho(id, qntdAtual - 1);
         }
+
         else {
             cardapio.metodos.removerItemCarrinho(id)
         }
-
     },
 
     // aumentar quantidade do item no carrinho
     aumentarQuantidadeCarrinho: (id) => {
-
         let qntdAtual = parseInt($("#qntd-carrinho-" + id).text());
         $("#qntd-carrinho-" + id).text(qntdAtual + 1);
         cardapio.metodos.atualizarCarrinho(id, qntdAtual + 1);
-
     },
 
     // botão remover item do carrinho
     removerItemCarrinho: (id) => {
-
         MEU_CARRINHO = $.grep(MEU_CARRINHO, (e, i) => { return e.id != id });
         cardapio.metodos.carregarCarrinho();
 
         // atualiza o botão carrinho com a quantidade atualizada
         cardapio.metodos.atualizarBadgeTotal();
-        
     },
 
     // atualiza o carrinho com a quantidade atual
@@ -328,18 +309,15 @@ cardapio.metodos = {
                 $("#lblValorEntrega").text(`+ R$ ${VALOR_ENTREGA.toFixed(2).replace('.', ',')}`);
                 $("#lblValorTotal").text(`R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.', ',')}`);
             }
-
         })
-
     },
 
     // carregar a etapa enderecos
     carregarEndereco: () => {
-
         if (MEU_CARRINHO.length <= 0) {
             cardapio.metodos.mensagem('Seu carrinho está vazio.')
             return;
-        } 
+        }
 
         cardapio.metodos.carregarEtapa(2);
     },

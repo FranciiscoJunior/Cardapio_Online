@@ -1,15 +1,7 @@
 
-# Cardápio On-line
+## Sistema de Cardápio On-line - para lanchonetes
 
-Este respectivo projeto, trata-se de um sistema de lanchonete On-line, onde o usuário ele poderá acessar diversas funcionalidades táis como a seção de reservas, serviços, cardápio e depoimento.
-
-Seção reservas: O usário poderá agendar ou solicitar um serviços através do whatsapp;
-
-Seção de serviços: Refere-se a qualidade dos serviços prestados pelo respectivo estabelecimento;
-
-Seção de Cardápio: O usuário terá acesso a toda a parte de cardápio, e terá disponível toda variedade de itens;
-
-Seção depoimentos: Disponível comentários de usuários dos serviços do estabelecimento.
+Este respectivo projeto, trata-se de um sistema de lanchonete On-line, onde o usuário ele poderá acessar diversas funcionalidades táis como a seção de reservas, serviços, cardápio e depoimento. Seção reservas: O usário poderá agendar ou solicitar um serviços através do whatsapp; Seção de serviços: Refere-se a qualidade dos serviços prestados pelo respectivo estabelecimento; Seção de Cardápio: O usuário terá acesso a toda a parte de cardápio, e terá disponível toda variedade de itens; Seção depoimentos: Disponível comentários de usuários dos serviços do estabelecimento.
 
 ### Funcionalidades do Sistema a ser adicionada no PostgreSQL
 
